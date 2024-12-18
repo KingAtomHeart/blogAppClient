@@ -15,7 +15,7 @@ export const BlogProvider = ({ children }) => {
 
   const getBlogs = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/blogs/getBlogs');
+      const response = await axios.get('https://blogappapi-1ijz.onrender.com/blogs/getBlogs');
       setBlogs(response.data.blogs);
     } catch (error) {
       console.error('Error fetching blogs:', error);
@@ -25,7 +25,7 @@ export const BlogProvider = ({ children }) => {
   const addBlog = async (blog) => {
     try {
       const response = await axios.post(
-        'http://localhost:4000/blogs/addBlog',
+        'https://blogappapi-1ijz.onrender.com/blogs/addBlog',
         blog,
         { headers: { Authorization: `Bearer ${authToken}` } } 
       );
@@ -39,7 +39,7 @@ export const BlogProvider = ({ children }) => {
   const editBlog = async (id, blog) => {
     try {
       const response = await axios.patch(
-        `http://localhost:4000/blogs/updateBlog/${id}`, 
+        `https://blogappapi-1ijz.onrender.com/blogs/updateBlog/${id}`, 
         blog,
         { headers: { Authorization: `Bearer ${authToken}` } } 
       );
@@ -51,7 +51,7 @@ export const BlogProvider = ({ children }) => {
 
   const deleteBlog = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/blogs/deleteBlog/${id}`, {
+      await axios.delete(`https://blogappapi-1ijz.onrender.com/blogs/deleteBlog/${id}`, {
         headers: { Authorization: `Bearer ${authToken}` },
       });
       setBlogs(blogs.filter(b => b._id !== id));
@@ -62,7 +62,7 @@ export const BlogProvider = ({ children }) => {
 
   const getMyBlogs = async () => {
     try {
-      const response = await fetch('http://localhost:4000/blogs/getMyBlogs', {
+      const response = await fetch('https://blogappapi-1ijz.onrender.com/blogs/getMyBlogs', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${authToken}`
